@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>JavaScript Login</title>
+
+<Script Language="JavaScript">
+    var attempt = 3; // Variable to count number of attempts.
+    function validate(){
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    // Nếu username trống hiển thị alert missing username
+    if (username == "") {
+      alert("Missing Username");
+      username.focus();
+      return false;
+    }
+    // Nếu password trống hiển thị alert missing username
+    if (password == "") {
+      alert("Missing Password");
+      password.focus();
+      return false;
+    }
+    // Chuyển đến trang Admin.html nếu nhập username là admin và password là password.
+    if ( username == "admin" && password == "password"){
+    alert ("Welcome back admin!");
+    window.location = "admin.html";
+    return false;
+    }
+    else{
+    // Có 3 lần nhập mỗi lần sai số attempt sẽ -1.
+    attempt --;
+    alert("You have left "+attempt+" attempt;");
+    // Vô hiệu hóa username, password và submit nếu nhập sai 3 lần tức là attempt = 0.
+    if( attempt == 0){
+    document.getElementById("username").disabled = true;
+    document.getElementById("password").disabled = true;
+    document.getElementById("submit").disabled = true;
+    return false;
+    }
+    }
+    }
+</script>
+
+</head>
+<body>
+
+<h2 font face="Georgia, Garamond, Times New Roman" color="#FF0000">
+  Login Form</h2>
+
+<font face="Verdana, Tahoma, Arial" size="3">
+<form name="CreditApplication">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100">User Name:</td>
+      <td><input type="text" name="username" id="username"/></td>
+    </tr>
+    <tr>
+      <td width="100">Password:</td>
+      <td><input type="password" name="password" id="password"/></td>
+    </tr>
+    <tr>
+      <td width="100"><br><br></td>
+      <td>
+        <input type="button" value="Login" id="submit" onclick="validate()"/>
+      </td>
+    </tr>
+  </table>
+</form>
+</font>
+
+</body>
+</html>
